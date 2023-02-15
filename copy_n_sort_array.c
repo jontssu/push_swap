@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   copy_n_sort_array.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:24:25 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 20:23:24 by jole             ###   ########.fr       */
+/*   Created: 2023/02/15 17:52:59 by jole              #+#    #+#             */
+/*   Updated: 2023/02/15 18:05:21 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort_array(t_struct *stack)
 {
-	t_struct	a;
-	t_struct	b;
-	t_struct	c;
+	int	i;
+	int	j;
+	int	tmp;
 
-	init_vars(&a, (argc - 1));
-	init_vars(&b, (argc - 1));
-	init_vars(&c, (argc - 1));
-	init_first_stack(&a, argc - 1, argv);
-	init_first_stack(&c, argc - 1, argv);
-	sort_array(&c);
-	push_smalls(&a, &b, &c);
-	print_stack(&a);
-	print_stack(&b);
-	print_stack(&c);
-	return (0);
+	i = 0;
+	j = 0;
+	while (j < stack->size)
+	{
+		while (i < stack->size)
+		{
+			if (stack->ptr[i] > stack->ptr[j])
+			{
+				tmp = stack->ptr[j];
+				stack->ptr[j] = stack->ptr[i];
+				stack->ptr[i] = tmp;
+			}
+			i++;
+		}
+		i = 0;
+		j++;
+	}
 }

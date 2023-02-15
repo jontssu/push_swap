@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   init_n_print_stack.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:24:25 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 20:23:24 by jole             ###   ########.fr       */
+/*   Created: 2023/02/15 16:18:18 by jole              #+#    #+#             */
+/*   Updated: 2023/02/15 17:31:13 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	init_first_stack(t_struct *a, int count, char **argv)
 {
-	t_struct	a;
-	t_struct	b;
-	t_struct	c;
+	int	i;
 
-	init_vars(&a, (argc - 1));
-	init_vars(&b, (argc - 1));
-	init_vars(&c, (argc - 1));
-	init_first_stack(&a, argc - 1, argv);
-	init_first_stack(&c, argc - 1, argv);
-	sort_array(&c);
-	push_smalls(&a, &b, &c);
-	print_stack(&a);
-	print_stack(&b);
-	print_stack(&c);
-	return (0);
+	i = 0;
+	while (count)
+	{
+		a->ptr[count - 1] = ft_atoi(argv[i + 1]);
+		count--;
+		i++;
+		a->size++;
+	}
+}
+
+void	print_stack(t_struct *stack)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("stack:\n");
+	while (i < stack->size)
+	{
+		ft_printf("%d\n", stack->ptr[stack->size - 1 - i]);
+		i++;
+	}
 }

@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:24:25 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 20:23:24 by jole             ###   ########.fr       */
+/*   Created: 2023/02/15 14:13:00 by jole              #+#    #+#             */
+/*   Updated: 2023/02/15 16:21:29 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	sa(t_struct *a)
 {
-	t_struct	a;
-	t_struct	b;
-	t_struct	c;
+	swap(a);
+	ft_printf("sa\n");
+}
 
-	init_vars(&a, (argc - 1));
-	init_vars(&b, (argc - 1));
-	init_vars(&c, (argc - 1));
-	init_first_stack(&a, argc - 1, argv);
-	init_first_stack(&c, argc - 1, argv);
-	sort_array(&c);
-	push_smalls(&a, &b, &c);
-	print_stack(&a);
-	print_stack(&b);
-	print_stack(&c);
-	return (0);
+void	sb(t_struct *b)
+{
+	swap(b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_struct *a, t_struct *b)
+{
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
+}
+
+void	swap(t_struct *stack)
+{
+	int	tmp;
+
+	if (stack->size >= 2)
+	{
+		tmp = stack->ptr[stack->size - 1];
+		stack->ptr[stack->size - 1] = stack->ptr[stack->size - 2];
+		stack->ptr[stack->size - 2] = tmp;
+	}
 }

@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 16:24:25 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 20:23:24 by jole             ###   ########.fr       */
+/*   Created: 2023/02/15 16:56:20 by jole              #+#    #+#             */
+/*   Updated: 2023/02/15 17:39:43 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ra(t_struct *a)
 {
-	t_struct	a;
-	t_struct	b;
-	t_struct	c;
+	rotate(a);
+	ft_printf("ra\n");
+}
 
-	init_vars(&a, (argc - 1));
-	init_vars(&b, (argc - 1));
-	init_vars(&c, (argc - 1));
-	init_first_stack(&a, argc - 1, argv);
-	init_first_stack(&c, argc - 1, argv);
-	sort_array(&c);
-	push_smalls(&a, &b, &c);
-	print_stack(&a);
-	print_stack(&b);
-	print_stack(&c);
-	return (0);
+void	rb(t_struct *b)
+{
+	rotate(b);
+	ft_printf("rb\n");
+}
+
+void	rr(t_struct *a, t_struct *b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+}
+
+void	rotate(t_struct *stack)
+{
+	int	top;
+	int	i;
+
+	i = 1;
+	top = stack->ptr[stack->size - 1];
+	while (i < stack->size)
+	{
+		stack->ptr[stack->size - i] = stack->ptr[stack->size - i - 1]; 
+		i++;
+	}
+	stack->ptr[0] = top;
 }

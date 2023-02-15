@@ -2,7 +2,7 @@ NAME = push_swap
 
 LIBFT = libft.a
 
-SRC = push_swap.c
+SRC = push_swap.c init_vars.c init_n_print_stack.c copy_n_sort_array.c swap.c push.c rotate.c reverse_rotate.c push_smalls.c
 
 OSRC = $(SRC:%.c=%.o)
 
