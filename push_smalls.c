@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:15:56 by jole              #+#    #+#             */
-/*   Updated: 2023/02/16 20:54:58 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/16 21:28:54 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,11 @@ void	sort_a_top(t_struct *a)
 	else
 	{
 		if (a->ptr[2] > a->ptr[0] && a->ptr[2] > a->ptr[1])
-		{
 			ra(a);
-			if (a->ptr[2] > a->ptr[1])
-				sa(a);
-		}
 		else if (a->ptr[1] > a->ptr[2] && a->ptr[1] > a->ptr[0])
-		{
 			rra(a);
-			if (a->ptr[2] > a->ptr[1])
-				sa(a);
-		}
-		else
-			if (a->ptr[2] > a->ptr[1])
-				sa(a);
+		if (a->ptr[2] > a->ptr[1])
+			sa(a);
 	}
 }
 
