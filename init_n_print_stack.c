@@ -6,23 +6,23 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:18:18 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 17:31:13 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/16 17:43:58 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_first_stack(t_struct *a, int count, char **argv)
+void	init_first_stack(t_struct *stack, int count, char **argv)
 {
 	int	i;
 
 	i = 0;
 	while (count)
 	{
-		a->ptr[count - 1] = ft_atoi(argv[i + 1]);
+		stack->ptr[count - 1] = ft_atoi(argv[i + 1]);
 		count--;
 		i++;
-		a->size++;
+		stack->size++;
 	}
 }
 

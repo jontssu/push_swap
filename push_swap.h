@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:00:30 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 20:12:19 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/16 19:36:11 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ typedef struct s_struct
 }				t_struct;
 
 void	init_vars(t_struct *stack, int size);
-void	init_first_stack(t_struct *a, int count, char **argv);
+void	init_first_stack(t_struct *stack, int count, char **argv);
 void	sort_array(t_struct *stack);
+void	copy_stack(t_struct *a, t_struct *c);
 void	sa(t_struct *a);
 void	sb(t_struct *b);
 void	ss(t_struct *a, t_struct *b);
@@ -42,6 +43,9 @@ void	rrr(t_struct *a, t_struct *b);
 void	reverse_rotate(t_struct *stack);
 void	push_smalls(t_struct *a, t_struct *b, t_struct *c);
 void	sort_a_top(t_struct *a);
+void	sort_from_b(t_struct *a, t_struct *b, t_struct *d);
+void	rotate_b(t_struct *a, t_struct *b, int distance);
+void	rrotate_b(t_struct *a, t_struct *b, int distance);
 void	print_stack(t_struct *a);
 
 #endif

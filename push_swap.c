@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:24:25 by jole              #+#    #+#             */
-/*   Updated: 2023/02/15 20:23:24 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/16 20:54:30 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,26 @@ int	main(int argc, char **argv)
 	t_struct	a;
 	t_struct	b;
 	t_struct	c;
+	t_struct	d;
 
 	init_vars(&a, (argc - 1));
 	init_vars(&b, (argc - 1));
 	init_vars(&c, (argc - 1));
+	init_vars(&d, (argc - 1));
 	init_first_stack(&a, argc - 1, argv);
-	init_first_stack(&c, argc - 1, argv);
-	sort_array(&c);
-	push_smalls(&a, &b, &c);
-	print_stack(&a);
-	print_stack(&b);
-	print_stack(&c);
+	init_first_stack(&d, argc - 1, argv);
+	if (a.size <= 3)
+	{
+		sort_a_top(&a);
+		exit(1);
+	}
+	sort_array(&d);
+	while (a.size > 3)
+		push_smalls(&a, &b, &c);
+	sort_a_top(&a);
+	sort_from_b(&a, &b, &d);
+	//ft_printf("\nend------------------\n");
+	//print_stack(&a);
+	//print_stack(&b);
 	return (0);
 }

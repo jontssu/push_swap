@@ -1,52 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_n_sort_array.c                                :+:      :+:    :+:   */
+/*   rotate_b.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 17:52:59 by jole              #+#    #+#             */
-/*   Updated: 2023/02/16 17:42:44 by jole             ###   ########.fr       */
+/*   Created: 2023/02/16 19:33:23 by jole              #+#    #+#             */
+/*   Updated: 2023/02/16 20:54:31 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_array(t_struct *stack)
+void	rotate_b(t_struct *a, t_struct *b, int distance)
 {
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	j = 0;
-	while (j < stack->size)
+	while (distance)
 	{
-		while (i < stack->size)
-		{
-			if (stack->ptr[i] > stack->ptr[j])
-			{
-				tmp = stack->ptr[j];
-				stack->ptr[j] = stack->ptr[i];
-				stack->ptr[i] = tmp;
-			}
-			i++;
-		}
-		i = 0;
-		j++;
+		rb(b);
+		distance--;
 	}
+	pa(a, b);
 }
 
-void	copy_stack(t_struct *a, t_struct *c)
+void	rrotate_b(t_struct *a, t_struct *b, int distance)
 {
-	int	i;
-
-	i = 0;
-	while (i < a->size)
+	while (distance)
 	{
-		c->ptr[i] = a->ptr[i];
-		i++;
+		rrb(b);
+		distance--;
 	}
-	c->size = a->size;
-	sort_array(c);
+	pa(a, b);
 }
