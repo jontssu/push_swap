@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:56:20 by jole              #+#    #+#             */
-/*   Updated: 2023/02/16 18:25:12 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/20 18:11:16 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	rotate(t_struct *stack)
 	top = stack->ptr[stack->size - 1];
 	while (i < stack->size)
 	{
-		stack->ptr[stack->size - i] = stack->ptr[stack->size - i - 1]; 
+		stack->ptr[stack->size - i] = stack->ptr[stack->size - i - 1];
 		i++;
 	}
 	stack->ptr[0] = top;

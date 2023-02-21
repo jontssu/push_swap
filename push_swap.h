@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:00:30 by jole              #+#    #+#             */
-/*   Updated: 2023/02/16 19:36:11 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/21 21:48:32 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ typedef struct s_struct
 	int	max_size;
 }				t_struct;
 
-void	init_vars(t_struct *stack, int size);
-void	init_first_stack(t_struct *stack, int count, char **argv);
+void	init_vars(t_struct *stack, t_struct *stack_two, int	size);
+int		count_size(char **split);
+void	init_stack_quotes(t_struct *stack, t_struct *stack_two, char **split);
+void	init_stack(t_struct *stack, t_struct *stack_two, int count, char **argv);
+int		check_valid_argument(char *str);
+void	copy_stack(t_struct *a, t_struct *d);
 void	sort_array(t_struct *stack);
-void	copy_stack(t_struct *a, t_struct *c);
+void	check_for_duplicates(t_struct *d);
 void	sa(t_struct *a);
 void	sb(t_struct *b);
 void	ss(t_struct *a, t_struct *b);
@@ -42,8 +46,12 @@ void	rrb(t_struct *b);
 void	rrr(t_struct *a, t_struct *b);
 void	reverse_rotate(t_struct *stack);
 void	push_smalls(t_struct *a, t_struct *b, t_struct *c);
-void	sort_a_top(t_struct *a);
+void	sort_a_top(t_struct *a, int flag);
 void	sort_from_b(t_struct *a, t_struct *b, t_struct *d);
+int		find_distance(t_struct *stack, int nb);
+int		find_from_top(t_struct *stack, int nb);
+void	push_second(t_struct *a, t_struct *b, t_struct *d, int distance);
+void	push_distance(t_struct *a, t_struct *b, int distance);
 void	rotate_b(t_struct *a, t_struct *b, int distance);
 void	rrotate_b(t_struct *a, t_struct *b, int distance);
 void	print_stack(t_struct *a);

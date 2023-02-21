@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:15:56 by jole              #+#    #+#             */
-/*   Updated: 2023/02/16 21:28:54 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/21 21:57:13 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	push_smalls(t_struct *a, t_struct *b, t_struct *c)
 	}
 }
 
-void	sort_a_top(t_struct *a)
+void	sort_a_top(t_struct *a, int flag)
 {
 	if (a->size == 2)
 	{
@@ -50,30 +50,6 @@ void	sort_a_top(t_struct *a)
 		if (a->ptr[2] > a->ptr[1])
 			sa(a);
 	}
-}
-
-void	sort_from_b(t_struct *a, t_struct *b, t_struct *d)
-{
-	int	i;
-	int distance;
-
-	i = 0;
-	while (b->size)
-	{
-		while (i < b->size)
-		{
-			if (b->ptr[b->size - i - 1] == d->ptr[d->max_size - a->size - 1]) 
-				// || b->ptr[i] == d->ptr[d->max_size - a->size - 2])
-			{
-				distance = i;
-				break;
-			}
-			i++;
-		}
-		if (distance < (b->size / 2))
-			rotate_b(a, b, distance);
-		else
-			rrotate_b(a, b, b->size - distance);
-		i = 0;
-	}
+	if (flag == 1)
+		exit (1);
 }

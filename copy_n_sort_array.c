@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:52:59 by jole              #+#    #+#             */
-/*   Updated: 2023/02/16 17:42:44 by jole             ###   ########.fr       */
+/*   Updated: 2023/02/21 21:58:04 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,32 @@ void	sort_array(t_struct *stack)
 	}
 }
 
-void	copy_stack(t_struct *a, t_struct *c)
+void	copy_stack(t_struct *a, t_struct *d)
 {
 	int	i;
 
 	i = 0;
 	while (i < a->size)
 	{
-		c->ptr[i] = a->ptr[i];
+		d->ptr[i] = a->ptr[i];
 		i++;
 	}
-	c->size = a->size;
-	sort_array(c);
+	d->size = a->size;
+	sort_array(d);
+}
+
+void	check_for_duplicates(t_struct *d)
+{
+	int	i;
+
+	i = 0;
+	while (d->ptr[i])
+	{
+		if (d->ptr[i] == d->ptr[i + 1])
+		{
+			write(2, "Error\n", 6);
+			exit (-1);
+		}
+		i++;
+	}
 }
