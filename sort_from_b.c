@@ -6,17 +6,20 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:06:39 by jole              #+#    #+#             */
-/*   Updated: 2023/02/21 18:48:37 by jole             ###   ########.fr       */
+/*   Updated: 2023/03/09 19:29:52 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_from_b(t_struct *a, t_struct *b, t_struct *d)
+void	sort_from_b(t_struct *a, t_struct *b, t_struct *c, t_struct *d)
 {
 	int	first;
 	int	second;
 
+	while (a->size > 3)
+		push_smalls(a, b, c);
+	sort_a_top(a);
 	while (b->size > 1)
 	{
 		first = find_distance(b, d->ptr[d->max_size - a->size - 1]);

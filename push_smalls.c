@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:15:56 by jole              #+#    #+#             */
-/*   Updated: 2023/02/21 21:57:13 by jole             ###   ########.fr       */
+/*   Updated: 2023/03/09 19:59:18 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	push_smalls(t_struct *a, t_struct *b, t_struct *c)
 	}
 }
 
-void	sort_a_top(t_struct *a, int flag)
+void	sort_a_top(t_struct *a)
 {
 	if (a->size == 2)
 	{
@@ -50,6 +50,4 @@ void	sort_a_top(t_struct *a, int flag)
 		if (a->ptr[2] > a->ptr[1])
 			sa(a);
 	}
-	if (flag == 1)
-		exit (1);
 }

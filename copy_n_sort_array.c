@@ -6,7 +6,7 @@
 /*   By: jole <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:52:59 by jole              #+#    #+#             */
-/*   Updated: 2023/02/21 21:58:04 by jole             ###   ########.fr       */
+/*   Updated: 2023/03/09 20:06:23 by jole             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,57 @@ void	sort_array(t_struct *stack)
 	}
 }
 
-void	copy_stack(t_struct *a, t_struct *d)
+void	copy_stack(t_struct *stack, t_struct *stack_two)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->size)
+	{
+		stack_two->ptr[i] = stack->ptr[i];
+		i++;
+	}
+	stack_two->size = stack->size;
+	sort_array(stack_two);
+}
+
+void	checks_before_push(t_pointers *pointers)
+{
+	int	i;
+
+	i = 0;
+	while (pointers->d->ptr[i])
+	{
+		if (pointers->d->ptr[i] == pointers->d->ptr[i + 1])
+		{
+			write(2, "Error\n", 6);
+			free_exit(pointers);
+		}
+		i++;
+	}
+	if (is_sorted(pointers->a, pointers->d))
+		free_exit(pointers);
+	if (pointers->a->size <= 3)
+	{
+		sort_a_top(pointers->a);
+		free_exit(pointers);
+	}
+	sort_from_b(pointers->a, pointers->b, pointers->c, pointers->d);
+	free_exit(pointers);
+}
+
+int	is_sorted(t_struct *a, t_struct *d)
 {
 	int	i;
 
 	i = 0;
 	while (i < a->size)
 	{
-		d->ptr[i] = a->ptr[i];
+		if (a->ptr[i] != d->ptr[a->size - i - 1])
+			break ;
 		i++;
 	}
-	d->size = a->size;
-	sort_array(d);
-}
-
-void	check_for_duplicates(t_struct *d)
-{
-	int	i;
-
-	i = 0;
-	while (d->ptr[i])
-	{
-		if (d->ptr[i] == d->ptr[i + 1])
-		{
-			write(2, "Error\n", 6);
-			exit (-1);
-		}
-		i++;
-	}
+	if (i == a->size)
+		return (-1);
+	return (0);
 }
